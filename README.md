@@ -1,5 +1,5 @@
 # Ex05 Image Carousel
-## Date:
+## Date:01.09.2026
 
 ## AIM
 To create a Image Carousel using React 
@@ -39,9 +39,96 @@ Use setInterval to call the nextImage() function at regular intervals.
 Clean up the interval when the component unmounts using clearInterval to prevent memory leaks.
 
 ## PROGRAM
+main.jsx
+```
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+```
+App.jsx
+```
+import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  const images = [
+    "https://picsum.photos/id/1015/600/400",
+    "https://picsum.photos/id/1016/600/400",
+    "https://picsum.photos/id/1025/600/400"
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  return (
+    <div className="container">
+      <h1>Image Carousel</h1>
+
+      <img src={images[index]} alt="carousel" />
+
+      <br />
+
+      <button onClick={() =>
+        setIndex((index - 1 + images.length) % images.length)
+      }>
+        Previous
+      </button>
+
+      <button onClick={() =>
+        setIndex((index + 1) % images.length)
+      }>
+        Next
+      </button>
+
+      <h3>Vahini - 19AI545</h3>
+    </div>
+  );
+}
+
+export default App;
+```
+App.css
+```
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: lightgray;
+}
+
+.container {
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  color: black;
+}
+
+img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+button {
+  margin: 20px 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+```
 
 
 ## OUTPUT
+<img width="1920" height="1080" alt="Screenshot (269)" src="https://github.com/user-attachments/assets/35cba6ce-c923-4cce-baa8-86594e006052" />
+<img width="1920" height="1080" alt="Screenshot (268)" src="https://github.com/user-attachments/assets/bde89ae0-580d-444d-a275-61b15fe3a43d" />
+
 
 
 ## RESULT
